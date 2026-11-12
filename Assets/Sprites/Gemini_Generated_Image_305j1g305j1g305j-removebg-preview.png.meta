@@ -366,16 +366,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gemini_Generated_Image_305j1g305j1g305j-removebg-preview_12
+      name: Hinderniss_horizontal
       rect:
         serializedVersion: 2
         x: 15
         y: 212
-        width: 147
+        width: 144
         height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 5, z: 0, w: 5}
       customData: 
       outline: []
       physicsShape: []
@@ -410,16 +410,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gemini_Generated_Image_305j1g305j1g305j-removebg-preview_14
+      name: Hinderniss_Horizontal
       rect:
         serializedVersion: 2
-        x: 317
+        x: 322
         y: 148
-        width: 30
+        width: 25
         height: 110
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 3, z: 4, w: 3}
       customData: 
       outline: []
       physicsShape: []
@@ -1221,9 +1221,7 @@ TextureImporter:
       Gemini_Generated_Image_305j1g305j1g305j-removebg-preview_0: 1371335600
       Gemini_Generated_Image_305j1g305j1g305j-removebg-preview_10: -1795454161
       Gemini_Generated_Image_305j1g305j1g305j-removebg-preview_11: -1347543698
-      Gemini_Generated_Image_305j1g305j1g305j-removebg-preview_12: -262651908
       Gemini_Generated_Image_305j1g305j1g305j-removebg-preview_13: -2018183204
-      Gemini_Generated_Image_305j1g305j1g305j-removebg-preview_14: -1608367471
       Gemini_Generated_Image_305j1g305j1g305j-removebg-preview_15: -617617763
       Gemini_Generated_Image_305j1g305j1g305j-removebg-preview_16: -1819157547
       Gemini_Generated_Image_305j1g305j1g305j-removebg-preview_17: -2116252103
@@ -1262,6 +1260,8 @@ TextureImporter:
       Gemini_Generated_Image_305j1g305j1g305j-removebg-preview_7: 1178819441
       Gemini_Generated_Image_305j1g305j1g305j-removebg-preview_8: -1316624740
       Gemini_Generated_Image_305j1g305j1g305j-removebg-preview_9: -611369265
+      Hinderniss_Horizontal: -1608367471
+      Hinderniss_horizontal: -262651908
       Player_Fliegt1: -1046050107
       "Player_F\xE4llt": -1646662185
       "Player_L\xE4uft1": -893395242785539403

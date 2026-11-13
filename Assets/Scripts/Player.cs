@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
 {
     [Header("Steuerung")]
     public float schubKraft = 15f;
+    public AudioManager audioManager;
 
     [Header("Sterben & Game Over")]
     public Sprite deadSprite;
@@ -23,11 +24,6 @@ public class Player : MonoBehaviour
         {
             gameOverUI.SetActive(false);
         }
-
-        if (ScoreManager.Instance != null)
-        {
-            ScoreManager.Instance.ResetGame();
-        }
     }
 
     void Update()
@@ -42,6 +38,17 @@ public class Player : MonoBehaviour
             return;
         }
 
+        // Schub & Jetpack-Sound solange Space gehalten wird
+        if (Input.GetKey(KeyCode.Space))
+        {
+            rb.AddForce(Vector2.up * schubKraft);
+            if (audioManager != null) audioManager.StartJetpack();
+        }
+        else
+        {
+            if (audioManager != null) audioManager.StopJetpack();
+        }
+
         // Schub nach oben
         if (Input.GetKey(KeyCode.Space))
         {
@@ -54,7 +61,7 @@ public class Player : MonoBehaviour
         if (isDead) return;
         isDead = true;
 
-        // 1. Sprite ndern
+        // 1. Sprite ändern
         if (deadSprite != null && sr != null)
         {
             sr.sprite = deadSprite;
@@ -70,7 +77,7 @@ public class Player : MonoBehaviour
             spawner.isSpawning = false;
         }
 
-        // 4. ScoreManager anhalten & Highscore prfen
+        // 4. ScoreManager anhalten & Highscore prüfen
         ScoreManager scoreManager = Object.FindAnyObjectByType<ScoreManager>();
         if (scoreManager != null)
         {
@@ -83,6 +90,6 @@ public class Player : MonoBehaviour
             gameOverUI.SetActive(true);
         }
 
-        Debug.LogWarning("[Game Over] Der Spieler ist gestorben! Drcke R fr Neustart.");
+        Debug.LogWarning("[Game Over] Der Spieler ist gestorben! Drücke R für Neustart.");
     }
 }

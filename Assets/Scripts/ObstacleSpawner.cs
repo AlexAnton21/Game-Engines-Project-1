@@ -21,7 +21,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         if (!isSpawning) return;
 
-        timer += Time.deltaTime;
+        timer += Time.deltaTime * ScoreManager.Instance.globalSpeedMultiplier;
 
         if (timer >= spawnInterval)
         {

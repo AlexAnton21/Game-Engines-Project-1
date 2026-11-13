@@ -23,6 +23,11 @@ public class Player : MonoBehaviour
         {
             gameOverUI.SetActive(false);
         }
+
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.ResetGame();
+        }
     }
 
     void Update()

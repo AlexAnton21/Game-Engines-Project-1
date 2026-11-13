@@ -8,7 +8,7 @@ public class Obstacle : MonoBehaviour
 
     void Update()
     {
-        transform.position += Vector3.left * speed * Time.deltaTime;
+        transform.position += Vector3.left * speed * ScoreManager.Instance.globalSpeedMultiplier * Time.deltaTime;
 
         if (transform.position.x < destroyX)
         {

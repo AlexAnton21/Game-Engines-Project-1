@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
         }
 
         // Schub nach oben
-        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+        if (Input.GetKey(KeyCode.Space))
         {
             rb.AddForce(Vector2.up * schubKraft);
         }

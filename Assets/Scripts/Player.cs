@@ -65,7 +65,14 @@ public class Player : MonoBehaviour
             spawner.isSpawning = false;
         }
 
-        // 4. Game Over Text fett in Rot anzeigen
+        // 4. ScoreManager anhalten & Highscore prfen
+        ScoreManager scoreManager = Object.FindAnyObjectByType<ScoreManager>();
+        if (scoreManager != null)
+        {
+            scoreManager.GameOver();
+        }
+
+        // 5. Game Over Text fett in Rot anzeigen
         if (gameOverUI != null)
         {
             gameOverUI.SetActive(true);

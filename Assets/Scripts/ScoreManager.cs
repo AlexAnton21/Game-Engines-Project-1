@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
+    // Singleton-Instanz & Spiel-Variablen
     public static ScoreManager Instance { get; private set; }
 
     [Header("Einstellungen")]
@@ -16,6 +17,7 @@ public class ScoreManager : MonoBehaviour
     private int highScore = 0;
     private bool isGameOver = false;
 
+    // Sorgt dafür, dass es nur einen ScoreManager gibt und er Szenenwechsel überlebt
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -27,6 +29,7 @@ public class ScoreManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    // Reagiert auf Szenenwechsel, um das Spiel bei einem Neustart zurückzusetzen
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -45,11 +48,13 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    // Lädt beim Spielstart den gespeicherten Bestwert
     void Start()
     {
         highScore = PlayerPrefs.GetInt("HighScore", 0);
     }
 
+    // Zählt während des Spiels die Meter hoch und erhöht alle 50m das Tempo
     void Update()
     {
         if (!isGameOver)
@@ -65,6 +70,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    // Stoppt beim Tod die Punkte und speichert einen neuen Rekord
     public void GameOver()
     {
         isGameOver = true;
@@ -78,6 +84,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    // Hilfsmethoden für die UI-Anzeige und den Runden-Reset
     public int GetHighScore()
     {
         return PlayerPrefs.GetInt("HighScore", 0);

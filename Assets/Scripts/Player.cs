@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        // Wenn tot: Steuerung blockiert, Neustart mit R
+        // Steuerung blocken
         if (isDead)
         {
             if (Input.GetKeyDown(KeyCode.R))
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        // Schub, Jetpack-Sound & Partikel solange Space gehalten wird
+        // Partikel und Sound sobald die Leertaste genutzt wird
         if (Input.GetKey(KeyCode.Space))
         {
             rb.AddForce(Vector2.up * schubKraft);
@@ -77,30 +77,28 @@ public class Player : MonoBehaviour
         if (audioManager != null) audioManager.StopJetpack();
         if (jetpackParticles != null) jetpackParticles.Stop();
 
-        // 1. Sprite ändern
         if (deadSprite != null && sr != null)
         {
             sr.sprite = deadSprite;
         }
 
-        // 2. Um 45 Grad drehen, damit er liegt
+        //Beim Tod wird das Player sprite um 45% gedreht
         transform.rotation = Quaternion.Euler(0, 0, -45f);
 
-        // 3. Spawner anhalten
+        //Spawner stopp
         ObstacleSpawner spawner = Object.FindAnyObjectByType<ObstacleSpawner>();
         if (spawner != null)
         {
             spawner.isSpawning = false;
         }
 
-        // 4. ScoreManager anhalten & Highscore prüfen
+        //Scoremanager Stoppen
         ScoreManager scoreManager = Object.FindAnyObjectByType<ScoreManager>();
         if (scoreManager != null)
         {
             scoreManager.GameOver();
         }
 
-        // 5. Game Over Text fett in Rot anzeigen
         if (gameOverUI != null)
         {
             gameOverUI.SetActive(true);

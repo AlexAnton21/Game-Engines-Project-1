@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        // Zur Sicherheit: Panel ausblenden, Zeit und Ton auf normal setzen
+        //Panel ausblenden, Zeit und Ton auf normal setzen
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
         AudioListener.pause = false;
@@ -18,7 +18,6 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        // Optional: Pausieren auch per ESC-Taste erlauben
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -43,14 +42,14 @@ public class PauseMenu : MonoBehaviour
     public void ResumeGame()
     {
         pausePanel.SetActive(false);
-        Time.timeScale = 1f; // Spielzeit läuft weiter
-        AudioListener.pause = false; // Musik & Sounds laufen weiter
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
         isPaused = false;
     }
 
     public void LoadMainMenu()
     {
-        Time.timeScale = 1f; // WICHTIG: Zeit wieder normalisieren, sonst ist das Menü eingefroren!
+        Time.timeScale = 1f; //Zeit wieder normalisieren
         AudioListener.pause = false;
         SceneManager.LoadScene(0);
     }

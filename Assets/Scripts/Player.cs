@@ -4,8 +4,9 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [Header("Steuerung")]
-    public float schubKraft = 15f;
+    public float schubKraft = 5f;
     public AudioManager audioManager;
+    public ParticleSystem jetpackParticles;
 
     [Header("Sterben & Game Over")]
     public Sprite deadSprite;
@@ -38,21 +39,17 @@ public class Player : MonoBehaviour
             return;
         }
 
-        // Schub & Jetpack-Sound solange Space gehalten wird
+        // Schub, Jetpack-Sound & Partikel solange Space gehalten wird
         if (Input.GetKey(KeyCode.Space))
         {
             rb.AddForce(Vector2.up * schubKraft);
             if (audioManager != null) audioManager.StartJetpack();
+            if (jetpackParticles != null && !jetpackParticles.isEmitting) jetpackParticles.Play();
         }
         else
         {
             if (audioManager != null) audioManager.StopJetpack();
-        }
-
-        // Schub nach oben
-        if (Input.GetKey(KeyCode.Space))
-        {
-            rb.AddForce(Vector2.up * schubKraft);
+            if (jetpackParticles != null && jetpackParticles.isEmitting) jetpackParticles.Stop();
         }
     }
 
@@ -60,6 +57,9 @@ public class Player : MonoBehaviour
     {
         if (isDead) return;
         isDead = true;
+
+        if (audioManager != null) audioManager.StopJetpack();
+        if (jetpackParticles != null) jetpackParticles.Stop();
 
         // 1. Sprite ändern
         if (deadSprite != null && sr != null)

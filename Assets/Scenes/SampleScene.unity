@@ -1308,10 +1308,10 @@ MonoBehaviour:
   - {fileID: 4922061274370094196, guid: bf3389ca6a76b0145a2235e1ace6f744, type: 3}
   - {fileID: 4953596835328972232, guid: 552675403587b094396878a55c701ab1, type: 3}
   - {fileID: 8835176613971857617, guid: c956d6c7f49819d4591da518d481e6d9, type: 3}
-  spawnInterval: 2.2
+  spawnInterval: 1
   spawnX: 14
-  minY: -2.2
-  maxY: 4.2
+  minY: -2.7
+  maxY: 5
   isSpawning: 1
 --- !u!4 &550102902
 Transform:

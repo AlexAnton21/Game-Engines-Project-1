@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class Player : MonoBehaviour
 {
@@ -8,12 +10,15 @@ public class Player : MonoBehaviour
     public AudioManager audioManager;
     public ParticleSystem jetpackParticles;
 
+
     [Header("Sterben & Game Over")]
     public Sprite deadSprite;
     public GameObject gameOverUI;
+    public Volume globalVolume;
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
+    private Vignette vignette;
     private bool isDead = false;
 
     void Start()
@@ -24,6 +29,12 @@ public class Player : MonoBehaviour
         if (gameOverUI != null)
         {
             gameOverUI.SetActive(false);
+        }
+
+        if (globalVolume != null && globalVolume.profile.TryGet(out vignette))
+        {
+            vignette.intensity.overrideState = true;
+            vignette.intensity.value = 0f;
         }
     }
 
@@ -57,6 +68,11 @@ public class Player : MonoBehaviour
     {
         if (isDead) return;
         isDead = true;
+
+        if (vignette != null)
+        {
+            vignette.intensity.value = 0.55f;
+        }
 
         if (audioManager != null) audioManager.StopJetpack();
         if (jetpackParticles != null) jetpackParticles.Stop();

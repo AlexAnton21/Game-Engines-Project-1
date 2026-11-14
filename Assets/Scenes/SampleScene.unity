@@ -400,6 +400,7 @@ MonoBehaviour:
   jetpackParticles: {fileID: 1461567999}
   deadSprite: {fileID: -1326979734, guid: 271bf37174642494db46270c54be767e, type: 3}
   gameOverUI: {fileID: 2141204280}
+  globalVolume: {fileID: 832575518}
 --- !u!61 &162701552
 BoxCollider2D:
   m_ObjectHideFlags: 0

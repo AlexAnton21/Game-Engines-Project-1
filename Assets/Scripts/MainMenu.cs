@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        // Gespeicherten Highscore laden und im Men anzeigen
+        // Gespeicherten Highscore laden und im Menu anzeigen
         if (ScoreManager.Instance != null)
         {
             highScoreText.text = "Highscore: " + ScoreManager.Instance.GetHighScore() + "m";
